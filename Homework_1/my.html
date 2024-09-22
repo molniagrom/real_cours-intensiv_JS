@@ -1,88 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Playlists</title>
-  <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-  <header>
-    <nav>
-      <div class="menu-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 10H15C15.55 10 16 10.45 16 11C16 11.55 15.55 12 15 12H5C4.45 12 4 11.55 4 11C4 10.45 4.45 10 5 10ZM5 6H15C15.55 6 16 6.45 16 7C16 7.55 15.55 8 15 8H5C4.45 8 4 7.55 4 7C4 6.45 4.45 6 5 6ZM5 14H11C11.55 14 12 14.45 12 15C12 15.55 11.55 16 11 16H5C4.45 16 4 15.55 4 15C4 14.45 4.45 14 5 14ZM14 14.88V19.11C14 19.5 14.42 19.74 14.76 19.54L18.29 17.42C18.61 17.23 18.61 16.76 18.29 16.56L14.76 14.44C14.42 14.25 14 14.49 14 14.88Z" fill="#FF2C91"/>
-        </svg></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Playlists</title>
+    <!-- <link rel="stylesheet" href="./styles.css" /> -->
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="menu-icon">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 10H15C15.55 10 16 10.45 16 11C16 11.55 15.55 12 15 12H5C4.45 12 4 11.55 4 11C4 10.45 4.45 10 5 10ZM5 6H15C15.55 6 16 6.45 16 7C16 7.55 15.55 8 15 8H5C4.45 8 4 7.55 4 7C4 6.45 4.45 6 5 6ZM5 14H11C11.55 14 12 14.45 12 15C12 15.55 11.55 16 11 16H5C4.45 16 4 15.55 4 15C4 14.45 4.45 14 5 14ZM14 14.88V19.11C14 19.5 14.42 19.74 14.76 19.54L18.29 17.42C18.61 17.23 18.61 16.76 18.29 16.56L14.76 14.44C14.42 14.25 14 14.49 14 14.88Z"
+              fill="#FF2C91"
+            />
+          </svg>
+        </div>
         <span class="logo">IntTube</span>
-    </nav>
-  </header>
+      </nav>
+    </header>
 
-  <main>
-    <section class="playlist-section">
-      <h1>My Playlists</h1>
-      
-      <div class="category">
-        <h2>Education Videos</h2>
-        <div class="card">
-          <div class="video-item">
-            <iframe width="100%" height="300" src="https://www.youtube.com/embed/BSQ3LSwyWlE" 
-            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <p class="underneath">JavaScript - Way of the Samurai, Browser, first program, foreign language learning simulator</p>
-            <span class="channel">It-Kamasutra</span>
-            <span class="label live">• Live Stream</span>
+    <main>
+      <section class="playlist-section">
+        <h1>My Playlists</h1>
+
+        <div class="category">
+          <h2>Education Videos</h2>
+          <div class="card" id="education-videos">
+
           </div>
-       
-          <div class="video-item">
-            <iframe width="100%" height="300" src="https://www.youtube.com/embed/BSQ3LSwyWlE" 
-            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <p class="underneath">JavaScript - Way of the Samurai, Browser, first program, foreign language learning simulator</p>
-            <span class="channel">It-Kamasutra</span>
-            <span class="label live">• Live Stream</span>
-          </div>
-       
-          <div class="video-item">
-            <iframe width="100%" height="300" src="https://www.youtube.com/embed/BSQ3LSwyWlE" 
-            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <p class="underneath">JavaScript - Way of the Samurai, Browser, first program, foreign language learning simulator</p>
-            <span class="channel">It-Kamasutra</span>
-            <span class="label live">• Live Stream</span>
-          </div>
-       
-        
         </div>
-      </div>
 
-      <div class="category">
-        <h2>Online training sports</h2>
-        <div class="card">
-            <div class="video-item">
-                <iframe width="100%" height="300" src="https://www.youtube.com/embed/BSQ3LSwyWlE" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p class="underneath">JavaScript - Way of the Samurai, Browser, first program, foreign language learning simulator</p>
-                <span class="channel">It-Kamasutra</span>
-                <span class="label live">• Live Stream</span>
-              </div>
-            <div class="video-item">
-                <iframe width="100%" height="300" src="https://www.youtube.com/embed/BSQ3LSwyWlE" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p class="underneath">JavaScript - Way of the Samurai, Browser, first program, foreign language learning simulator</p>
-                <span class="channel">It-Kamasutra</span>
-                <span class="label live">• Live Stream</span>
-              </div>
-            <div class="video-item">
-                <iframe width="100%" height="300" src="https://www.youtube.com/embed/BSQ3LSwyWlE" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <p class="underneath">JavaScript - Way of the Samurai, Browser, first program, foreign language learning simulator</p>
-                <span class="channel">It-Kamasutra</span>
-                <span class="label live">• Live Stream</span>
-              </div>
-           
+        <div class="category">
+          <h2>Online training sports</h2>
+          <div class="card" id="sports-videos">
+
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-
-
-<!-- <script src="./my.js"></script> -->
-</body>
+    <script src="./my.js"></script>
+    <script src="./style.js"></script>
+  </body>
 </html>

@@ -1,102 +1,105 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #1c1c1c;
-    color: #fff;
-  }
-  
-  header {
-    background-color: #333;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-  }
-  
-  nav{
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-    align-items: center;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #FF2C91;
-  }
-  
-  .menu-icon {
-    font-size: 1.5rem;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
-  .playlist-section {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  h1 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-  }
-  
-  .category {
-    margin-bottom: 40px;
-  }
-  
-  h2 {
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-  }
-  
-  .card {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .video-item {
-    background-color: #2b2b2b;
-    padding: 10px;
-    width: calc(33.333% - 20px);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    text-align: left;
-  }
-  
-  .video-item img {
-    max-width: 100%;
-    border-radius: 4px;
-  }
-  
-  .channel {
-    font-size: 0.9rem;
-    color: #bbb;
-  }
-  
-  .date, .channel, .label {
-    display: block;
-    font-size: 0.8rem;
-    margin-top: 5px;
-  }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1c1c1c;
+  color: #fff;
+}
 
-  .channel{
+header {
+  background-color: #333;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
 
-  }
-  
-  .label.live {
-    color: #f54242;
-  }
-  
+nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff2c91;
+}
+
+.menu-icon {
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+main {
+  padding: 20px;
+}
+
+.playlist-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.category {
+  margin-bottom: 40px;
+  background-color: #2b2b2b;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.card {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.video-item {
+  padding: 10px;
+  width: calc(33.333% - 20px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.video-item img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+.channel {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.date,
+.channel,
+.label {
+  display: block;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.underneath {
+    flex: 1 1 auto;
+    height: 10%;
+}
+
+.label.live {
+  color: #f54242;
+}

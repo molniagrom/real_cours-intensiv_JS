@@ -1,3 +1,12 @@
+// Создаем элементы
+const header = document.createElement('header');
+const nav = document.createElement('nav');
+const logo = document.createElement('div');
+const menuIcon = document.createElement('div');
+const main = document.createElement('main');
+const playlistSection = document.createElement('section');
+const h1 = document.createElement('h1');
+
 // Устанавливаем текст для логотипа и иконки меню
 logo.textContent = 'My Logo';
 menuIcon.textContent = '≡'; // Символ для иконки меню
@@ -64,3 +73,12 @@ applyStyles(logo, styles.logo);
 applyStyles(menuIcon, styles.menuIcon);
 applyStyles(main, styles.main);
 applyStyles(h1, styles.h1);
+
+// Добавляем элементы в DOM
+nav.appendChild(logo);
+nav.appendChild(menuIcon);
+header.appendChild(nav);
+playlistSection.appendChild(h1);
+main.appendChild(playlistSection);
+document.body.appendChild(header);
+document.body.appendChild(main);

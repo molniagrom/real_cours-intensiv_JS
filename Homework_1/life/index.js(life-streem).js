@@ -8,13 +8,16 @@ const playlists = [
                 artist: 'Eminem',
                 title: 'Rap God',
                 isHot: true,
-                imageSource: '/img/cardImage/trackList/track1.jpeg'
+                imageSource: '/img/cardImage/trackList/track1.jpeg',
+                audioSource: '../Zivert - Life.mp3' // Добавили ссылку на аудио
+
             },
             {
                 artist: '50 cent',
                 title: 'In da Club',
                 isHot: false,
-                imageSource: '/img/cardImage/trackList/track2.jpeg'
+                imageSource: '/img/cardImage/trackList/track2.jpeg',
+                audioSource: '../Zivert - Life.mp3' // Добавили ссылку на аудио
             }
         ]
     },
@@ -26,7 +29,7 @@ const playlists = [
                 artist: 'Public Enemy',
                 title: 'Fight the Power',
                 isHot: true,
-                imageSource: '/img/cardImage/trackList/track3.jpeg'
+                imageSource: '../Zivert - Life.mp3'
             }
         ]
     }
@@ -54,8 +57,15 @@ for (let i = 0; i < playlists.length; i++) {
        
         const trackImageElement = document.createElement('img');
         trackImageElement.src = track.imageSource;
+
+
+         // Создаем аудиопроигрыватель
+         const audioElement = document.createElement('audio');
+         audioElement.controls = true; // Добавляем элемент управления (play, pause и т.д.)
+         audioElement.src = track.audioSource;
+
        
-        trackElement.append(trackImageElement, track.title)
+        trackElement.append(trackImageElement, track.title, audioElement)
 
         tracksElement.append(trackElement)
     }

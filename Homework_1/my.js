@@ -8,13 +8,13 @@
       live: true,
     },
     {
-      src: "https://www.youtube.com/embed/aANdGBY1R_o",
+      src: "https://www.youtube.com/embed/5ZBY9c4hbr8?si=CQ5yLGwEJoLrdK9W",
       description: "JavaScript - Installing VS code, code editor",
       channel: "It-Kamasutra",
       live: false,
     },
     {
-      src: "https://www.youtube.com/embed/quUQtnZb4Q8",
+      src: "https://www.youtube.com/embed/UGqumQi0hwc?si=E6a1RA79TYgeJeYQ",
       description: "JavaScript - Express, Typescript, Nodemon",
       channel: "It-Kamasutra",
       live: false,
@@ -53,7 +53,7 @@
       // Create iframe
       const iframe = document.createElement("iframe");
       iframe.width = "100%";
-      iframe.height = window.innerWidth < 600 ? 200 : 300; // Adaptive height
+      iframe.height = window.innerWidth < 600 ? 200 : 250; // Adaptive height
       iframe.src = video.src;
       iframe.setAttribute("allowfullscreen", "");
       iframe.setAttribute("frameborder", "0");
@@ -118,6 +118,6 @@
   window.addEventListener("resize", () => {
     const iframes = document.querySelectorAll("iframe");
     iframes.forEach((iframe) => {
-      iframe.height = window.innerWidth < 600 ? 200 : 300;
+      iframe.height = window.innerWidth < 600 ? 200 : 250;
     });
   });

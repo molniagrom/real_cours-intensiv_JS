@@ -45,7 +45,7 @@ const sportsVideos = [
     description: "PERFECT 20 MIN FULL BODY WORKOUT - FOR BEGINNERS",
     channel: "BullyJuice",
     live: false,
-    publishedDate: new Date('2020-09-01'),
+    publishedDate: new Date('2024-09-23'),
   },
 ];
 
@@ -56,35 +56,35 @@ function timeAgo(date) {
   let interval = Math.floor(seconds / 31536000);
   
   if (interval >= 1) {
-    return interval === 1 ? "1 год назад" : `${interval} лет назад`;
+    return interval === 1 ? "1 year ago" : `${interval} years ago`;
   }
   
-  interval = Math.floor(seconds / 2592000); // 30 дней
+  interval = Math.floor(seconds / 2592000); // 30 days
   if (interval >= 1) {
-    return interval === 1 ? "1 месяц назад" : `${interval} месяцев назад`;
+    return interval === 1 ? "1 month ago" : `${interval} months ago`;
   }
   
-  interval = Math.floor(seconds / 86400); // 1 день
+  interval = Math.floor(seconds / 86400); // 1 day
   if (interval >= 7) {
     const weeks = Math.floor(interval / 7);
-    return weeks === 1 ? "1 неделя назад" : `${weeks} недели назад`;
+    return weeks === 1 ? "1 week ago" : `${weeks} weeks ago`;
   }
   
   if (interval >= 1) {
-    return interval === 1 ? "1 день назад" : `${interval} дней назад`;
+    return interval === 1 ? "1 day ago" : `${interval} days ago`;
   }
   
-  interval = Math.floor(seconds / 3600); // 1 час
+  interval = Math.floor(seconds / 3600); // 1 hour
   if (interval >= 1) {
-    return interval === 1 ? "1 час назад" : `${interval} часов назад`;
+    return interval === 1 ? "1 hour ago" : `${interval} hours ago`;
   }
   
-  interval = Math.floor(seconds / 60); // 1 минута
+  interval = Math.floor(seconds / 60); // 1 minute
   if (interval >= 1) {
-    return interval === 1 ? "1 минута назад" : `${interval} минут назад`;
+    return interval === 1 ? "1 minute ago" : `${interval} minutes ago`;
   }
   
-  return seconds < 5 ? "Только что" : `${seconds} секунд назад`;
+  return seconds < 5 ? "Just now" : `${seconds} seconds ago`;
 }
 
 // Function to render videos in a category
@@ -138,8 +138,6 @@ function renderVideos(videoArray, containerId) {
     }
   });
 }
-
-
 
 // Render education and sports videos
 renderVideos(educationVideos, "education-videos");

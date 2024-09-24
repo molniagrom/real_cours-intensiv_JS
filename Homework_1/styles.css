@@ -103,3 +103,16 @@ h2 {
 .label.live {
   color: #f54242;
 }
+
+#audio-tracks{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+ }
+ 
+.underneath{
+  text-align: center;
+  padding: 0px 0px 9px 0px;
+}

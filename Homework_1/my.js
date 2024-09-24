@@ -149,12 +149,17 @@ function renderVideos(videoArray, containerId) {
   });
 }
 
-// Function to render audio tracks
+// Function to render audio tracks with h2 and description
 function renderAudioTracks(audioArray, containerId) {
   const container = document.getElementById(containerId);
+  
   audioArray.forEach((audio) => {
     const audioItem = document.createElement("div");
     audioItem.classList.add("audio-item");
+
+    // Create h2 element
+    const h2Element = document.createElement("h2");
+    h2Element.textContent = audio.h2;
 
     // Create audio element
     const audioElement = document.createElement("audio");
@@ -166,18 +171,15 @@ function renderAudioTracks(audioArray, containerId) {
 
     audioElement.appendChild(source);
 
-    // Fallback text for unsupported browsers
-    // const fallbackText = audioTracks.h2;
-
     // Create description
     const description = document.createElement("p");
     description.classList.add("underneath");
     description.textContent = audio.description;
 
     // Append elements to audioItem
-    audioItem.appendChild(audioElement);
-    // audioItem.appendChild(fallbackText);
+    audioItem.appendChild(h2Element); // Add h2
     audioItem.appendChild(description);
+    audioItem.appendChild(audioElement);
 
     // Append audioItem to container
     container.appendChild(audioItem);

@@ -1,3 +1,13 @@
+// Audio data for ringtones
+const audioTracks = [
+  {
+    h2: "You want a new ringtone?",
+    src: "./Zivert - Life.mp3",
+    description: "Zivert - Life",
+    type: "audio/mpeg",
+  },
+];
+
 // Video data for education videos
 const educationVideos = [
   {
@@ -20,7 +30,7 @@ const educationVideos = [
     description: "JavaScript - Express, Typescript, Nodemon",
     channel: "It-Kamasutra",
     live: false,
-    publishedDate: new Date('2023-08-15'),
+    publishedDate: new Date('2024-07-15'),
   },
 ];
 
@@ -139,9 +149,47 @@ function renderVideos(videoArray, containerId) {
   });
 }
 
+// Function to render audio tracks
+function renderAudioTracks(audioArray, containerId) {
+  const container = document.getElementById(containerId);
+  audioArray.forEach((audio) => {
+    const audioItem = document.createElement("div");
+    audioItem.classList.add("audio-item");
+
+    // Create audio element
+    const audioElement = document.createElement("audio");
+    audioElement.controls = true;
+
+    const source = document.createElement("source");
+    source.src = audio.src;
+    source.type = audio.type;
+
+    audioElement.appendChild(source);
+
+    // Fallback text for unsupported browsers
+    // const fallbackText = audioTracks.h2;
+
+    // Create description
+    const description = document.createElement("p");
+    description.classList.add("underneath");
+    description.textContent = audio.description;
+
+    // Append elements to audioItem
+    audioItem.appendChild(audioElement);
+    // audioItem.appendChild(fallbackText);
+    audioItem.appendChild(description);
+
+    // Append audioItem to container
+    container.appendChild(audioItem);
+  });
+}
+
 // Render education and sports videos
 renderVideos(educationVideos, "education-videos");
 renderVideos(sportsVideos, "sports-videos");
+
+// Render audio tracks
+renderAudioTracks(audioTracks, "audio-tracks");
 
 // Adjust video height on window resize
 window.addEventListener("resize", () => {

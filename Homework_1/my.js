@@ -62,14 +62,14 @@ const sportsVideos = [
 // Function to calculate time ago
 function timeAgo(date) {
   const now = new Date();
-  const seconds = Math.floor((now - date) / 1000);
-  let interval = Math.floor(seconds / 31536000);
+  const seconds = Math.floor((now - date) / 1000); // How many seconds elapsed between the two times.
+  let interval = Math.floor(seconds / 31536000); // divide the number of seconds by the number of seconds in a year to find out how many full years have passed
   
   if (interval >= 1) {
     return interval === 1 ? "1 year ago" : `${interval} years ago`;
   }
   
-  interval = Math.floor(seconds / 2592000); // 30 days
+  interval = Math.floor(seconds / 2592000); // 30 days ~ If the condition for years is false, we recalculate the interval for months.
   if (interval >= 1) {
     return interval === 1 ? "1 month ago" : `${interval} months ago`;
   }
@@ -96,7 +96,6 @@ function timeAgo(date) {
   
   return seconds < 5 ? "Just now" : `${seconds} seconds ago`;
 }
-
 // Function to render videos in a category
 function renderVideos(videoArray, containerId) {
   const container = document.getElementById(containerId);

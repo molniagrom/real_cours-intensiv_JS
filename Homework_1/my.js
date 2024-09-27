@@ -1,4 +1,3 @@
-// Audio data for ringtones
 const audioTracks = [
   {
     h2: "You want a new ringtone?",
@@ -8,7 +7,6 @@ const audioTracks = [
   },
 ];
 
-// Video data for education videos
 const educationVideos = [
   {
     src: "https://www.youtube.com/embed/BSQ3LSwyWlE",
@@ -34,7 +32,6 @@ const educationVideos = [
   },
 ];
 
-// Video data for sports videos
 const sportsVideos = [
   {
     src: "https://www.youtube.com/embed/7fQ-KkOKL7w",
@@ -59,7 +56,6 @@ const sportsVideos = [
   },
 ];
 
-// Function to calculate time ago
 function timeAgo(date) {
   const now = new Date();
   const seconds = Math.floor((now - date) / 1000); // How many seconds elapsed between the two times.
@@ -96,17 +92,16 @@ function timeAgo(date) {
   
   return seconds < 5 ? "Just now" : `${seconds} seconds ago`;
 }
-// Function to render videos in a category
 function renderVideos(videoArray, containerId) {
   const container = document.getElementById(containerId);
   videoArray.forEach((video) => {
     const videoItem = document.createElement("div");
     videoItem.classList.add("video-item");
 
-    // Create iframe
+   
     const iframe = document.createElement("iframe");
     iframe.width = "100%";
-    iframe.height = window.innerWidth < 600 ? 200 : 250; // Adaptive height
+    iframe.height = window.innerWidth < 600 ? 200 : 250;
     iframe.src = video.src;
     iframe.setAttribute("allowfullscreen", "");
     iframe.setAttribute("frameborder", "0");
@@ -115,25 +110,24 @@ function renderVideos(videoArray, containerId) {
       "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     );
 
-    // Create description
+   
     const description = document.createElement("p");
     description.classList.add("underneath");
     description.textContent = video.description;
 
-    // Create channel info
+   
     const channel = document.createElement("span");
     channel.classList.add("channel");
     channel.textContent = video.channel;
 
-    // Append elements to videoItem
+   
     videoItem.appendChild(iframe);
     videoItem.appendChild(description);
     videoItem.appendChild(channel);
 
-    // Append videoItem to container
+    
     container.appendChild(videoItem);
 
-    // Time label
     if (video.live) {
       const liveLabel = document.createElement("span");
       liveLabel.classList.add("label", "live");
@@ -148,7 +142,6 @@ function renderVideos(videoArray, containerId) {
   });
 }
 
-// Function to render audio tracks with h2 and description
 function renderAudioTracks(audioArray, containerId) {
   const container = document.getElementById(containerId);
   
@@ -156,11 +149,9 @@ function renderAudioTracks(audioArray, containerId) {
     const audioItem = document.createElement("div");
     audioItem.classList.add("audio-item");
 
-    // h2 element
     const h2Element = document.createElement("h2");
     h2Element.textContent = audio.h2;
 
-    // audio element
     const audioElement = document.createElement("audio");
     audioElement.controls = true;
 
@@ -170,29 +161,23 @@ function renderAudioTracks(audioArray, containerId) {
 
     audioElement.appendChild(source);
 
-    // description
     const description = document.createElement("p");
     description.classList.add("underneath");
     description.textContent = audio.description;
 
-    // Append elements to audioItem
-    audioItem.appendChild(h2Element); // Add h2
+    audioItem.appendChild(h2Element); 
     audioItem.appendChild(description);
     audioItem.appendChild(audioElement);
 
-    // Append audioItem to container
     container.appendChild(audioItem);
   });
 }
 
-// Render education and sports videos
 renderVideos(educationVideos, "education-videos");
 renderVideos(sportsVideos, "sports-videos");
 
-// Render audio tracks
 renderAudioTracks(audioTracks, "audio-tracks");
 
-// Adjust video height on window resize
 window.addEventListener("resize", () => {
   const iframes = document.querySelectorAll("iframe");
   iframes.forEach((iframe) => {

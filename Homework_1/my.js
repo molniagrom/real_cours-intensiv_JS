@@ -156,11 +156,11 @@ function renderAudioTracks(audioArray, containerId) {
     const audioItem = document.createElement("div");
     audioItem.classList.add("audio-item");
 
-    // Create h2 element
+    // h2 element
     const h2Element = document.createElement("h2");
     h2Element.textContent = audio.h2;
 
-    // Create audio element
+    // audio element
     const audioElement = document.createElement("audio");
     audioElement.controls = true;
 
@@ -170,7 +170,7 @@ function renderAudioTracks(audioArray, containerId) {
 
     audioElement.appendChild(source);
 
-    // Create description
+    // description
     const description = document.createElement("p");
     description.classList.add("underneath");
     description.textContent = audio.description;

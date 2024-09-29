@@ -1,5 +1,5 @@
 import { liba } from "./liba";
-import { TracksComponent } from "./TracksComponent";
+import { TracksComponent } from "./TracksComponent.js";
 
 
 

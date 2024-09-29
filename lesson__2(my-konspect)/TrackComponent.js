@@ -1,5 +1,5 @@
-import { TrackImageComponent } from "./TrackImageComponent";
-import { TrackTitleComponent } from "./TrackTitleComponent";
+import { TrackImageComponent } from "./TrackImageComponent.js";
+import { TrackTitleComponent } from "./TrackTitleComponent.js";
 
 
 export function TrackComponent(inputTrack) {

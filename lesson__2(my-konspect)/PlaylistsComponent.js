@@ -1,4 +1,4 @@
-import { PlaylistComponent } from "./PlaylistComponent";
+import { PlaylistComponent } from "./PlaylistComponent.js";
 
 // components
 export function PlaylistsComponent(inputPlaylists) {

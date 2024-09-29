@@ -1,4 +1,4 @@
-import { playlists as a } from "./data.js";
+import { playlists as a } from "./data/data.js";
 import { PlaylistsComponent } from "./PlaylistsComponent.js";
 
 // DATA

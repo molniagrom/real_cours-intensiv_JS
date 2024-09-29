@@ -65,7 +65,8 @@ function timeAgo(date) {
     return interval === 1 ? "1 year ago" : `${interval} years ago`;
   }
   
-  interval = Math.floor(seconds / 2592000); // 30 days ~ If the condition for years is false, we recalculate the interval for months.
+  const secindsInMonth = 2592000;
+  interval = Math.floor(seconds / secindsInMonth); // 30 days ~ If the condition for years is false, we recalculate the interval for months.
   if (interval >= 1) {
     return interval === 1 ? "1 month ago" : `${interval} months ago`;
   }
@@ -89,8 +90,10 @@ function timeAgo(date) {
   if (interval >= 1) {
     return interval === 1 ? "1 minute ago" : `${interval} minutes ago`;
   }
-  
+// сделать так чтобы была только одна проверка if else
+  return interval === 1 ? `1 ${intervalUnitsName} a go` : `${interval} ${intervalUnitsName}s ago`;
   return seconds < 5 ? "Just now" : `${seconds} seconds ago`;
+
 }
 function renderVideos(videoArray, containerId) {
   const container = document.getElementById(containerId);

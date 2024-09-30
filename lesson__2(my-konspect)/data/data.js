@@ -1,4 +1,6 @@
-export const playlists = [
+import { refresh } from "../index.js";
+
+export let playlists = [
     {
         id: 1,
         title: 'Hip-Hop Hits',
@@ -30,4 +32,9 @@ export const playlists = [
         ]
     }
 ]
+
+export const deletePlaylist = (id) => {
+    playlists = playlists.filter(p => p.id !== id);
+    refresh();
+}
 

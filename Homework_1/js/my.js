@@ -29,7 +29,7 @@ audioElements.forEach((audioObject) => {
 
 // Обработчик изменения размера окна
 window.addEventListener("resize", () => {
-  const iframes = document.querySelectorAll("iframe");
+  const iframes = document.querySelectorAll(".height-adaptive");
   iframes.forEach((iframe) => {
     iframe.height = window.innerWidth < 600 ? 200 : 250;
   });

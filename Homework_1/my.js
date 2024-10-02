@@ -1,3 +1,6 @@
+import { timeAgo } from "./timeAgo.js";
+
+
 const audioTracks = [
   {
     h2: "You want a new ringtone?",
@@ -96,54 +99,14 @@ const sportsVideos = [
   ],
 ];
 
-
-console.log(sportsVideos);
-
-
-function timeAgo(date) {
-  const now = new Date();
-  const seconds = Math.floor((now - date) / 1000); // How many seconds elapsed between the two times.
-  let interval = Math.floor(seconds / 31536000); // divide the number of seconds by the number of seconds in a year to find out how many full years have passed
-
-  if (interval >= 1) {
-    return interval === 1 ? "1 year ago" : `${interval} years ago`;
-  }
-
-  const secindsInMonth = 2592000;
-  interval = Math.floor(seconds / secindsInMonth); // 30 days ~ If the condition for years is false, we recalculate the interval for months.
-  if (interval >= 1) {
-    return interval === 1 ? "1 month ago" : `${interval} months ago`;
-  }
-
-  interval = Math.floor(seconds / 86400); // 1 day
-  if (interval >= 7) {
-    const weeks = Math.floor(interval / 7);
-    return weeks === 1 ? "1 week ago" : `${weeks} weeks ago`;
-  }
-
-  if (interval >= 1) {
-    return interval === 1 ? "1 day ago" : `${interval} days ago`;
-  }
-
-  interval = Math.floor(seconds / 3600); // 1 hour
-  if (interval >= 1) {
-    return interval === 1 ? "1 hour ago" : `${interval} hours ago`;
-  }
-
-  interval = Math.floor(seconds / 60); // 1 minute
-  if (interval >= 1) {
-    return interval === 1 ? "1 minute ago" : `${interval} minutes ago`;
-  }
-  // сделать так чтобы была только одна проверка if else
-  return interval === 1
-    ? `1 ${intervalUnitsName} a go`
-    : `${interval} ${intervalUnitsName}s ago`;
-
-  // return seconds < 5 ? "Just now" : `${seconds} seconds ago`;
-}
 function renderVideos(videoArray, containerId) {
   const container = document.getElementById(containerId);
-  videoArray.forEach((video) => {
+  
+  // Проходимся по каждому вложенному массиву
+  videoArray.forEach((videoDetails) => {
+    const video = videoDetails[0]; // Извлекаем первый элемент, который содержит информацию о видео
+    const metadata = videoDetails[1]; // Извлекаем второй элемент, который содержит метаданные
+
     const videoItem = document.createElement("div");
     videoItem.classList.add("video-item");
 
@@ -175,7 +138,7 @@ function renderVideos(videoArray, containerId) {
     if (video.live) {
       const liveLabel = document.createElement("span");
       liveLabel.classList.add("label", "live");
-      liveLabel.textContent = "• Live Stream";
+      liveLabel.textContent = "• Прямой эфир";
       videoItem.appendChild(liveLabel);
     } else {
       const timeLabel = document.createElement("span");

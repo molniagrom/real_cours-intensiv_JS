@@ -1,8 +1,8 @@
 // Version 0.2.
 
-import { audioTracks, educationVideos, sportsVideos } from './mediaData.js';
-import { renderAudioTracks } from './renderAudioTracks.js';
-import { renderVideos } from './renderVideos.js';
+import { audioTracks, educationVideos, sportsVideos } from './media/mediaData.js';
+import { renderAudioTracks } from './render/renderAudioTracks.js';
+import { renderVideos } from './render/renderVideos.js';
 
 //  Добавление элементов в контейнеры
 

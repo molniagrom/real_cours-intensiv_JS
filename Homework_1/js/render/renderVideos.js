@@ -1,5 +1,5 @@
-import { iframe } from "./iframe.js"; 
-import { timeAgo } from "./timeAgo.js";
+import { iframe } from "../media/iframe.js"; 
+import { timeAgo } from "../time/timeAgo.js";
 
 export function renderVideos(videoArray) {
     const videoObjects = [];

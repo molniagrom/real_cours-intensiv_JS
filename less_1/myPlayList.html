@@ -156,14 +156,14 @@
         audio.src = track.audio; 
         audio.controls = true; 
 
-        listItem.appendChild(img);
-        listItem.appendChild(document.createTextNode(track.title));
-        listItem.appendChild(audio); 
+        listItem.append(img);
+        listItem.append(document.createTextNode(track.title));
+        listItem.append(audio); 
 
-        playlist.appendChild(listItem);
+        playlist.append(listItem);
       });
 
-      document.body.appendChild(playlist);
+      document.body.append(playlist);
 
     </script>
   </body>

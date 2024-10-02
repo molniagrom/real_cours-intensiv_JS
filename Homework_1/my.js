@@ -1,193 +1,127 @@
-import { timeAgo } from "./timeAgo.js";
+// Version 0.2.
 
+import { audioTracks, educationVideos, sportsVideos } from './mediaData.js';
+import { renderAudioTracks } from './renderAudioTracks.js';
+import { renderVideos } from './renderVideos.js';
 
-const audioTracks = [
-  {
-    h2: "You want a new ringtone?",
-    src: "./Zivert - Life.mp3",
-    description: "Zivert - Life",
-    type: "audio/mpeg",
-  },
-];
+//  Добавление элементов в контейнеры
 
-const educationVideos = [
-  [
-    {
-      src: "https://www.youtube.com/embed/BSQ3LSwyWlE",
-      description:
-        "JavaScript - Way of the Samurai, Browser, first program, foreign language learning simulator",
-      channel: "It-Kamasutra",
-      live: true,
-      publishedDate: new Date("2024-07-20"),
-    },
-    {
-      audience: "12+",
-      category: "education",
-    },
-  ],
-  
-  [
-    {
-      src: "https://www.youtube.com/embed/5ZBY9c4hbr8?si=CQ5yLGwEJoLrdK9W",
-      description: "JavaScript - Installing VS code, code editor",
-      channel: "It-Kamasutra",
-      live: false,
-      publishedDate: new Date("2024-09-01"),
-    },
-    {
-      audience: "12+",
-      category: "education",
-    },
-  ],
-  
-  [
-    {
-      src: "https://www.youtube.com/embed/UGqumQi0hwc?si=E6a1RA79TYgeJeYQ",
-      description: "JavaScript - Express, Typescript, Nodemon",
-      channel: "It-Kamasutra",
-      live: false,
-      publishedDate: new Date("2024-07-15"),
-    },
-    {
-      audience: "12+",
-      category: "education",
-    },
-  ],
-];
+// Для образовательных видео
+const educationContainer = document.getElementById("education-videos");
+const educationVideoElements = renderVideos(educationVideos);
+educationVideoElements.forEach((videoObject) => {
+  educationContainer.append(videoObject);
+});
 
-const sportsVideos = [
-  [
-    {
-      src: "https://www.youtube.com/embed/7fQ-KkOKL7w",
-      description: "20 MIN FULL BODY WORKOUT - Beginner Version",
-      channel: "Pamela Reif",
-      live: false,
-      publishedDate: new Date("2023-09-05"),
-    },
-    {
-      audience: "6+",
-      category: "sport",
-    },
-  ],
+// Для спортивных видео
+const sportsContainer = document.getElementById("sports-videos");
+const sportsVideoElements = renderVideos(sportsVideos);
+sportsVideoElements.forEach((videoObject) => {
+  sportsContainer.append(videoObject);
+});
 
-  [
-    {
-      src: "https://www.youtube.com/embed/E1JT1CKEOuA",
-      description: "Sports training online - Stretching Yoga",
-      channel: "Seva Prithodko",
-      live: false,
-      publishedDate: new Date("2021-08-25"),
-    },
-    {
-      audience: "6+",
-      category: "sport",
-    },
-  ],
+// Для аудиотреков
+const audioContainer = document.getElementById("audio-tracks");
+const audioElements = renderAudioTracks(audioTracks);
+audioElements.forEach((audioObject) => {
+  audioContainer.append(audioObject);
+});
 
-  [
-    {
-      src: "https://www.youtube.com/embed/23WTBzutLJE",
-      description: "PERFECT 20 MIN FULL BODY WORKOUT - FOR BEGINNERS",
-      channel: "BullyJuice",
-      live: false,
-      publishedDate: new Date("2024-09-23"),
-    },
-    {
-      audience: "6+",
-      category: "sport",
-    },
-  ],
-];
-
-function renderVideos(videoArray, containerId) {
-  const container = document.getElementById(containerId);
-  
-  // Проходимся по каждому вложенному массиву
-  videoArray.forEach((videoDetails) => {
-    const video = videoDetails[0]; // Извлекаем первый элемент, который содержит информацию о видео
-    const metadata = videoDetails[1]; // Извлекаем второй элемент, который содержит метаданные
-
-    const videoItem = document.createElement("div");
-    videoItem.classList.add("video-item");
-
-    const iframe = document.createElement("iframe");
-    iframe.width = "100%";
-    iframe.height = window.innerWidth < 600 ? 200 : 250;
-    iframe.src = video.src;
-    iframe.setAttribute("allowfullscreen", "");
-    iframe.setAttribute("frameborder", "0");
-    iframe.setAttribute(
-      "allow",
-      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    );
-
-    const description = document.createElement("p");
-    description.classList.add("underneath");
-    description.textContent = video.description;
-
-    const channel = document.createElement("span");
-    channel.classList.add("channel");
-    channel.textContent = video.channel;
-
-    videoItem.append(iframe);
-    videoItem.append(description);
-    videoItem.append(channel);
-
-    container.append(videoItem);
-
-    if (video.live) {
-      const liveLabel = document.createElement("span");
-      liveLabel.classList.add("label", "live");
-      liveLabel.textContent = "• Прямой эфир";
-      videoItem.appendChild(liveLabel);
-    } else {
-      const timeLabel = document.createElement("span");
-      timeLabel.classList.add("label", "unLive");
-      timeLabel.textContent = timeAgo(video.publishedDate);
-      videoItem.appendChild(timeLabel);
-    }
-  });
-}
-
-function renderAudioTracks(audioArray, containerId) {
-  const container = document.getElementById(containerId);
-
-  audioArray.forEach((audio) => {
-    const audioItem = document.createElement("div");
-    audioItem.classList.add("audio-item");
-
-    const h2Element = document.createElement("h2");
-    h2Element.textContent = audio.h2;
-
-    const audioElement = document.createElement("audio");
-    audioElement.controls = true;
-
-    const source = document.createElement("source");
-    source.src = audio.src;
-    source.type = audio.type;
-
-    audioElement.appendChild(source);
-
-    const description = document.createElement("p");
-    description.classList.add("underneath");
-    description.textContent = audio.description;
-
-    audioItem.appendChild(h2Element);
-    audioItem.appendChild(description);
-    audioItem.appendChild(audioElement);
-
-    container.appendChild(audioItem);
-  });
-}
-
-renderVideos(educationVideos, "education-videos");
-renderVideos(sportsVideos, "sports-videos");
-
-renderAudioTracks(audioTracks, "audio-tracks");
-
+// Обработчик изменения размера окна
 window.addEventListener("resize", () => {
   const iframes = document.querySelectorAll("iframe");
   iframes.forEach((iframe) => {
     iframe.height = window.innerWidth < 600 ? 200 : 250;
   });
 });
+
+
+// ......................................
+
+// Version 0.1.
+
+// import { timeAgo } from "./timeAgo.js";
+// import { audioTracks, educationVideos, sportsVideos } from './mediaData.js';
+// import { iframe } from "./iframe.js";
+
+// function renderVideos(videoArray, containerId) {
+//   const container = document.getElementById(containerId);
+  
+//   // Проходимся по каждому вложенному массиву
+//   videoArray.forEach((videoDetails) => {
+//     const video = videoDetails[0]; // Извлекаем первый элемент, который содержит информацию о видео
+//     //const metadata = videoDetails[1]; // Извлекаем второй элемент, который содержит метаданные
+
+//     // const videoObject = document.createElement('div');
+//     // videoObject.classList.add('video-item');
+    
+//     const description = document.createElement("p");
+//     description.classList.add("underneath");
+//     description.textContent = video.description;
+
+//     const channel = document.createElement("span");
+//     channel.classList.add("channel");
+//     channel.textContent = video.channel;
+
+//     videoObject.append(iframe);
+//     videoObject.append(description);
+//     videoObject.append(channel);
+
+//     container.append(videoObject);
+
+//     if (video.live) {
+//       const liveLabel = document.createElement("span");
+//       liveLabel.classList.add("label", "live");
+//       liveLabel.textContent = "• Прямой эфир";
+//       videoObject.appendChild(liveLabel);
+//     } else {
+//       const timeLabel = document.createElement("span");
+//       timeLabel.classList.add("label", "unLive");
+//       timeLabel.textContent = timeAgo(video.publishedDate);
+//       videoObject.appendChild(timeLabel);
+//     }
+//   });
+// }
+
+// function renderAudioTracks(audioArray, containerId) {
+//   const container = document.getElementById(containerId);
+
+//   audioArray.forEach((audio) => {
+//     const audioObject = document.createElement("div");
+//     audioObject.classList.add("audio-item");
+
+//     const h2Element = document.createElement("h2");
+//     h2Element.textContent = audio.h2;
+
+//     const audioElement = document.createElement("audio");
+//     audioElement.controls = true;
+
+//     const source = document.createElement("source");
+//     source.src = audio.src;
+//     source.type = audio.type;
+
+//     audioElement.appendChild(source);
+
+//     const description = document.createElement("p");
+//     description.classList.add("underneath");
+//     description.textContent = audio.description;
+
+//     audioObject.appendChild(h2Element);
+//     audioObject.appendChild(description);
+//     audioObject.appendChild(audioElement);
+
+//     container.appendChild(audioObject);
+//   });
+// }
+
+// renderVideos(educationVideos, "education-videos");
+// renderVideos(sportsVideos, "sports-videos");
+
+// renderAudioTracks(audioTracks, "audio-tracks");
+
+// window.addEventListener("resize", () => {
+//   const iframes = document.querySelectorAll("iframe");
+//   iframes.forEach((iframe) => {
+//     iframe.height = window.innerWidth < 600 ? 200 : 250;
+//   });
+// });

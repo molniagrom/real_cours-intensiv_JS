@@ -31,7 +31,7 @@ audioElements.forEach((audioObject) => {
 window.addEventListener("resize", () => {
   const iframes = document.querySelectorAll(".height-adaptive");
   iframes.forEach((iframe) => {
-    iframe.height = window.innerWidth < 600 ? 200 : 250;
+    iframe.height = window.innerWidth < 768 ? 200 : 250; // Screen size for adaptive (tablets)
   });
 });
 

@@ -92,7 +92,58 @@ export const audioTracks = [
     ],
   ];
   
+  export const deleteSportsVideos = (id) => {
+    sportsVideos = sportsVideos.filter(p => p.id !== id)
+    refresh()
+}
+  export const deleteEducationVideos = (id) => {
+    educationVideos = educationVideos.filter(p => p.id !== id)
+    refresh()
+}
 
   // .....................................
 
-  
+// // Список наблюдателей
+// const observers = [];
+
+// /**
+//  * Функция для подписки на изменения данных
+//  * @param {function} observer - Функция, которая будет вызвана при изменении данных
+//  */
+// export const subscribe = (observer) => {
+//   observers.push(observer); // Добавляем наблюдателя в список
+// };
+
+// /**
+//  * Функция для отписки от изменений данных
+//  * @param {function} observer - Функция, которую нужно удалить из списка наблюдателей
+//  */
+// export const unsubscribe = (observer) => {
+//   const index = observers.indexOf(observer);
+//   if (index > -1) {
+//     observers.splice(index, 1); // Удаляем наблюдателя из списка
+//   }
+// };
+
+// /**
+//  * Функция для уведомления всех наблюдателей об изменениях
+//  */
+// export const emit = () => {
+//   observers.forEach((observer) => observer()); // Вызываем все функции-наблюдатели
+// };
+
+// // Пример использования в существующих функциях управления данными
+// export const addAudioTrack = (newTrack) => {
+//   audioTracks.push(newTrack);
+//   emit(); // Уведомляем всех, что данные изменились
+// };
+
+// export const addEducationVideo = (newVideo) => {
+//   educationVideos.push([newVideo]);
+//   emit();
+// };
+
+// export const addSportsVideo = (newVideo) => {
+//   sportsVideos.push([newVideo]);
+//   emit();
+// };

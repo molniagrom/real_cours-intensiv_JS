@@ -1,40 +1,72 @@
 // Version 0.2.
-
-import { audioTracks, educationVideos, sportsVideos } from './media/mediaData.js';
-import { renderAudioTracks } from './render/renderAudioTracks.js';
+import { buttons, educationVideos, sportsVideos } from './media/mediaData.js';
+import { renderButtons } from './render/renderButton.js';
 import { renderVideos } from './render/renderVideos.js';
 
-//  Добавление элементов в контейнеры
+let button1;
+let button2;
 
-// Для образовательных видео
-const educationContainer = document.getElementById("education-videos");
-const educationVideoElements = renderVideos(educationVideos);
-educationVideoElements.forEach((videoObject) => {
-  educationContainer.append(videoObject);
-});
+// Функция для обновления интерфейса после удаления
+const refreshUI = () => {
+    const educationContainer = document.getElementById("education-videos");
+    educationContainer.innerHTML = ''; // Очистить текущие видео
+    const educationVideoElements = renderVideos(educationVideos);
+    educationVideoElements.forEach((videoObject) => {
+        educationContainer.append(videoObject);
+    });
 
-// Для спортивных видео
-const sportsContainer = document.getElementById("sports-videos");
-const sportsVideoElements = renderVideos(sportsVideos);
-sportsVideoElements.forEach((videoObject) => {
-  sportsContainer.append(videoObject);
-});
+    const sportsContainer = document.getElementById("sports-videos");
+    sportsContainer.innerHTML = ''; // Очистить текущие видео
+    const sportsVideoElements = renderVideos(sportsVideos);
+    sportsVideoElements.forEach((videoObject) => {
+        sportsContainer.append(videoObject);
+    });
 
-// Для аудиотреков
-const audioContainer = document.getElementById("audio-tracks");
-const audioElements = renderAudioTracks(audioTracks);
-audioElements.forEach((audioObject) => {
-  audioContainer.append(audioObject);
-});
+};
+
+// Функция для удаления образовательных видео
+const deleteEducationVideos = () => {
+    educationVideos.length = 0; // Очистить массив
+    refreshUI(); // Обновить интерфейс
+    if (button1) button1.remove(); // Удалить кнопку удаления образовательных видео
+};
+
+// Функция для удаления спортивных видео
+const deleteSportsVideos = () => {
+    sportsVideos.length = 0; // Очистить массив
+    refreshUI(); // Обновить интерфейс
+    if (button2) button2.remove(); // Удалить кнопку удаления спортивных видео
+};
+
+// Начальное отображение интерфейса
+refreshUI();
+
+// Создание кнопок и добавление обработчиков событий
+const createButtons = () => {
+    button1 = renderButtons(buttons[0]);
+    button2 = renderButtons(buttons[1]);
+
+    button1.addEventListener("click", () => {
+        deleteEducationVideos();
+        button1.remove(); // Удалить кнопку сразу после нажатия
+    });
+
+    button2.addEventListener("click", () => {
+        deleteSportsVideos();
+        button2.remove(); // Удалить кнопку сразу после нажатия
+    });
+};
+
+// Вызов функции для создания кнопок
+createButtons();
 
 // Обработчик изменения размера окна
 window.addEventListener("resize", () => {
-  const iframes = document.querySelectorAll(".height-adaptive");
-  iframes.forEach((iframe) => {
-    iframe.height = window.innerWidth < 768 ? 200 : 250; // Screen size for adaptive (tablets)
-  });
+    const iframes = document.querySelectorAll(".height-adaptive");
+    iframes.forEach((iframe) => {
+        iframe.height = window.innerWidth < 768 ? 200 : 250; // Адаптивный размер
+    });
 });
-
 
 // ......................................
 
@@ -133,9 +165,6 @@ window.addEventListener("resize", () => {
 //   });
 // });
 
-
-
-
 // ......................................
 
 // Version 0.1.
@@ -146,7 +175,7 @@ window.addEventListener("resize", () => {
 
 // function renderVideos(videoArray, containerId) {
 //   const container = document.getElementById(containerId);
-  
+
 //   // Проходимся по каждому вложенному массиву
 //   videoArray.forEach((videoDetails) => {
 //     const video = videoDetails[0]; // Извлекаем первый элемент, который содержит информацию о видео
@@ -154,7 +183,7 @@ window.addEventListener("resize", () => {
 
 //     // const videoObject = document.createElement('div');
 //     // videoObject.classList.add('video-item');
-    
+
 //     const description = document.createElement("p");
 //     description.classList.add("underneath");
 //     description.textContent = video.description;

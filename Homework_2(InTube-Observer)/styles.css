@@ -116,3 +116,22 @@ h2 {
   text-align: left;
   padding: 0px 0px 9px 0px;
 }
+
+.reaction{
+  background-color: #040b39;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: 2px solid #042039;
+  transition: transform 0.3s;
+}
+
+.reaction:hover {
+  background-color: #1f264f;
+  border: 2px solid #0c2e4b;
+  transform: scale(0.9);
+}

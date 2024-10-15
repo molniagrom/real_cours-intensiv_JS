@@ -101,13 +101,37 @@ export const buttons = [
   },
 ];
 
-export const deleteSportsVideos = (id) => {
-  sportsVideos = sportsVideos.filter((p) => p.id !== id);
-  refresh();
+// Список наблюдателей
+const observers = [];
+
+// Функция для подписки на изменения данных
+export const subscribe = (observer) => {
+  observers.push(observer);
 };
-export const deleteEducationVideos = (id) => {
-  educationVideos = educationVideos.filter((p) => p.id !== id);
-  refresh();
+
+// Функция для отписки от изменений данных
+export const unsubscribe = (observer) => {
+  const index = observers.indexOf(observer);
+  if (index > -1) {
+    observers.splice(index, 1);
+  }
+};
+
+// Функция для уведомления всех наблюдателей об изменениях
+export const emit = () => {
+  observers.forEach((observer) => observer());
+};
+
+// Функция для удаления образовательных видео
+export const deleteEducationVideos = () => {
+  educationVideos.length = 0;
+  emit(); // Уведомляем наблюдателей
+};
+
+// Функция для удаления спортивных видео
+export const deleteSportsVideos = () => {
+  sportsVideos.length = 0;
+  emit(); // Уведомляем наблюдателей
 };
 
 // .....................................

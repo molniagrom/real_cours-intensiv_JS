@@ -1,11 +1,18 @@
-// import { buttons } from "../media/mediaData";
+let category1 = document.getElementById("sports-videos");
+let category2 = document.getElementById("education-videos");
 
-export function renderButtons(buttonDetails) {
-    // Создание кнопки и добавление её в интерфейс
+export function renderButtons1(buttonDetails) {
     const button = document.createElement("button");
     button.classList.add("reaction");
     button.innerText = buttonDetails.text;
-    // Добавление кнопки в тело документа (или в нужный контейнер)
-    document.body.append(button); // Измените на нужный контейнер
-    return button; // Возвращаем созданный элемент кнопки
+    category1.append(button);
+    return button; 
+}
+
+export function renderButtons2(buttonDetails) {
+    const button = document.createElement("button");
+    button.classList.add("reaction");
+    button.innerText = buttonDetails.text;
+    category2.append(button);
+    return button; 
 }

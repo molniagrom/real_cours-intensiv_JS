@@ -1,71 +1,85 @@
 // Version 0.2.
-import { buttons, educationVideos, sportsVideos } from './media/mediaData.js';
-import { renderButtons } from './render/renderButton.js';
-import { renderVideos } from './render/renderVideos.js';
+// my.js
+import {
+  buttons,
+  educationVideos,
+  sportsVideos,
+  subscribe,
+  deleteEducationVideos,
+  deleteSportsVideos,
+} from "./media/mediaData.js";
+import { renderButtons1, renderButtons2 } from "./render/renderButton.js";
+import { renderVideos } from "./render/renderVideos.js";
 
 let button1;
 let button2;
 
-// Функция для обновления интерфейса после удаления
+// Флаги для отслеживания состояния кнопок
+let isButton1Removed = false;
+let isButton2Removed = false;
+
+// Функция для обработки образовательного плейлиста
+const handleEducationPlaylist = () => {
+  const educationContainer = document.getElementById("education-videos");
+  educationContainer.innerHTML = ""; // Очистить текущие видео
+  const educationVideoElements = renderVideos(educationVideos);
+  educationVideoElements.forEach((videoObject) => {
+    educationContainer.append(videoObject);
+  });
+
+  // Создание кнопки для образовательного плейлиста
+  if (!isButton1Removed) {
+    button1 = renderButtons1(buttons[1]);
+    button1.addEventListener("click", () => {
+      deleteEducationVideos();
+      isButton1Removed = true; // Устанавливаем флаг для button1
+      button1.remove(); // Удаляем кнопку сразу после нажатия
+      refreshUI(); // Обновляем интерфейс после удаления
+    });
+    educationContainer.append(button1); // Добавляем кнопку
+  }
+};
+
+// Функция для обработки спортивного плейлиста
+const handleSportsPlaylist = () => {
+  const sportsContainer = document.getElementById("sports-videos");
+  sportsContainer.innerHTML = ""; // Очистить текущие видео
+  const sportsVideoElements = renderVideos(sportsVideos);
+  sportsVideoElements.forEach((videoObject) => {
+    sportsContainer.append(videoObject);
+  });
+
+  // Создание кнопки для спортивного плейлиста
+  if (!isButton2Removed) {
+    button2 = renderButtons2(buttons[0]);
+    button2.addEventListener("click", () => {
+      deleteSportsVideos();
+      isButton2Removed = true; // Устанавливаем флаг для button2
+      button2.remove(); // Удаляем кнопку сразу после нажатия
+      refreshUI(); // Обновляем интерфейс после удаления
+    });
+    sportsContainer.append(button2); // Добавляем кнопку
+  }
+};
+
+// Функция для обновления интерфейса
 const refreshUI = () => {
-    const educationContainer = document.getElementById("education-videos");
-    educationContainer.innerHTML = ''; // Очистить текущие видео
-    const educationVideoElements = renderVideos(educationVideos);
-    educationVideoElements.forEach((videoObject) => {
-        educationContainer.append(videoObject);
-    });
-
-    const sportsContainer = document.getElementById("sports-videos");
-    sportsContainer.innerHTML = ''; // Очистить текущие видео
-    const sportsVideoElements = renderVideos(sportsVideos);
-    sportsVideoElements.forEach((videoObject) => {
-        sportsContainer.append(videoObject);
-    });
-
-};
-
-// Функция для удаления образовательных видео
-const deleteEducationVideos = () => {
-    educationVideos.length = 0; // Очистить массив
-    refreshUI(); // Обновить интерфейс
-    if (button1) button1.remove(); // Удалить кнопку удаления образовательных видео
-};
-
-// Функция для удаления спортивных видео
-const deleteSportsVideos = () => {
-    sportsVideos.length = 0; // Очистить массив
-    refreshUI(); // Обновить интерфейс
-    if (button2) button2.remove(); // Удалить кнопку удаления спортивных видео
+  handleEducationPlaylist(); // Обновляем образовательный плейлист
+  handleSportsPlaylist(); // Обновляем спортивный плейлист
 };
 
 // Начальное отображение интерфейса
 refreshUI();
 
-// Создание кнопок и добавление обработчиков событий
-const createButtons = () => {
-    button1 = renderButtons(buttons[0]);
-    button2 = renderButtons(buttons[1]);
-
-    button1.addEventListener("click", () => {
-        deleteEducationVideos();
-        button1.remove(); // Удалить кнопку сразу после нажатия
-    });
-
-    button2.addEventListener("click", () => {
-        deleteSportsVideos();
-        button2.remove(); // Удалить кнопку сразу после нажатия
-    });
-};
-
-// Вызов функции для создания кнопок
-createButtons();
+// Подписка на обновление интерфейса
+subscribe(refreshUI);
 
 // Обработчик изменения размера окна
 window.addEventListener("resize", () => {
-    const iframes = document.querySelectorAll(".height-adaptive");
-    iframes.forEach((iframe) => {
-        iframe.height = window.innerWidth < 768 ? 200 : 250; // Адаптивный размер
-    });
+  const iframes = document.querySelectorAll(".height-adaptive");
+  iframes.forEach((iframe) => {
+    iframe.height = window.innerWidth < 768 ? 200 : 250; // Адаптивный размер
+  });
 });
 
 // ......................................
